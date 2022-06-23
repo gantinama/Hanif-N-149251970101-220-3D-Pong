@@ -110,6 +110,10 @@ public class GoalController : MonoBehaviour
                     paddle.GetComponent<PaddleController>().LosingLP(player);
                 }
             }
+            else
+            {
+                ball.GetComponent<BallController>().ResetBall();
+            }
         }
     }
 }

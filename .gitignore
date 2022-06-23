@@ -76,3 +76,4 @@ crashlytics-build.properties
 3D Pong/Logs/*
 obj/*
 .vsconfig
+3D Pong/Playable/*

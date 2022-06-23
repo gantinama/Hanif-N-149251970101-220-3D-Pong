@@ -23,24 +23,28 @@ public class ScoreManager : MonoBehaviour
     { 
         player1Score += increment;
         ball.ResetBall(); 
+        // GameObject.Find("Ball").SetActive(false);
     } 
  
     public void AddPlayer2Score(int increment) 
     { 
         player2Score += increment;
         ball.ResetBall();
+        // GameObject.Find("Ball").SetActive(false);
     }
     
     public void AddPlayer3Score(int increment) 
     { 
         player3Score += increment;
         ball.ResetBall(); 
+        // GameObject.Find("Ball").SetActive(false);
     } 
  
     public void AddPlayer4Score(int increment) 
     { 
         player3Score += increment;
         ball.ResetBall();
+        // GameObject.Find("Ball").SetActive(false);
     } 
  
     public void GameOver() 

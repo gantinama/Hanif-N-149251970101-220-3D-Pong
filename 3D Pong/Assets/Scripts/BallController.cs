@@ -18,7 +18,7 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log("speed " + speed + "reset pos " + resetPosition);
     }
 
     public void OnCollisionEnter(Collision collision) 
@@ -48,6 +48,13 @@ public class BallController : MonoBehaviour
     public void ResetBall()
     {
         transform.position = resetPosition;
+        // Destroy(gameObject);
         // rig.velocity = speed;
     }
+
+    // public void MoveBall(Vector3 direction)
+    // {
+    //     rig.velocity = direction;
+    //     Debug.Log(rig.velocity);
+    // }
 }

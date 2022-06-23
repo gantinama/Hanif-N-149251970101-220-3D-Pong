@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    public Transform spawnField;
     public int maxBalls;
     public int spawnIntervals;
     public Vector3 spawnAreaMin;
@@ -13,22 +14,32 @@ public class SpawnManager : MonoBehaviour
 
     Vector3 pos;
     private int totalBalls = 0;
+    private float timer;
+    // private List<GameObject> ballList;
     // Start is called before the first frame update
     void Start()
     {
-        // spawnArea = new List<GameObject>();
+        // ballList = new List<GameObject>();
+        timer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        GenerateRandomBalls();
+        timer += Time.deltaTime;
+        if (timer > spawnIntervals)
+        {
+            GenerateRandomBalls();
+            timer -= spawnIntervals;
+        }
     }
 
     public void GenerateRandomBalls()
     {
         int randomSpawnIndex = Random.Range(0, spawnArea.Count);
         GenerateRandomBallsPos(randomSpawnIndex);
+        // GenerateRandomBallsPos(new Vector3(Random.Range(spawnAreaMin.x, spawnAreaMax.x), Random.Range(spawnAreaMin.y, spawnAreaMax.y), Random.Range(spawnAreaMin.z, spawnAreaMax.z)));
+    
     }
 
     public void GenerateRandomBallsPos(int position)
@@ -53,9 +64,12 @@ public class SpawnManager : MonoBehaviour
         Debug.Log(balls.Count);
 
 
-        GameObject ball = Instantiate(balls[randomIndex], pos, Quaternion.identity);
+        GameObject ball = Instantiate(balls[randomIndex], pos, Quaternion.identity, spawnField);
 
         balls[randomIndex].SetActive(true);
+        // ballList.Add(balls);
+
+        spawnArea[position].GetComponent<SpawnController>().BallDirections(spawnArea[position].tag, pos);
 
         totalBalls += 1;
     }
